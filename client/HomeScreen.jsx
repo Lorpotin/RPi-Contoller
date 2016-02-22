@@ -20,7 +20,7 @@ var HomeScreen = React.createClass({
 		let $this = this,
 			content = [];
 		$.ajax({
-			url: "http://192.168.0.199:8000/temp",
+			url: "http://192.168.0.193:8000/temp",
 			type: "GET",
 			contentType:'application/json',
 			dataType:'json',
@@ -29,35 +29,20 @@ var HomeScreen = React.createClass({
 
 				React.render(
 				<div className="bs-component container-orders">
-				<div className="table-responsive-vertical">
-                    	<section>
-		                   <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		                    	<h1>{t.toTimeString().split('G')[0]}</h1>
-		                   </div>
-		                </section>
-                    </div>
-                    <div className="table-responsive-vertical">
-                    	<section>
-		                   <div id="tempheader" className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		                    	<h1>Cpu Temperature</h1>
-		                   </div>
-		                  
-		                   <div id="tempdata" className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		                    	<h1>{data.cputemp}&deg;C</h1>
-		                   </div>
-		                </section>
-                    </div>
-                    <div className="table-responsive-vertical">
-                    	<section>
-		                   <div id="tempheader" className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		                    	<h1>Gpu Temperature</h1>
-		                   </div>
-		                  
-		                   <div id="tempdata" className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		                    	<h1>{data.gputemp.split('=')[1].split("'C")[0]}&deg;C</h1>
-		                   </div>
-		                </section>
-                    </div>
+				<section>
+                   <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<h1>{t.toTimeString().split('G')[0]}</h1>
+                   </div>
+                   <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<h1>Cpu {data.cputemp}&deg;C</h1>
+                   </div>
+                  
+                   
+                   <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<h1>Gpu {data.gputemp.split('=')[1].split("'C")[0]}&deg;C</h1>
+                   </div>
+                  
+                </section>
                 </div>,
 				document.getElementById('container')
 

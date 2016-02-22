@@ -27,14 +27,14 @@ var LedScreen = React.createClass({
 			var pixel = imageData.data;
 
 			//Update interface just to show the values for convenience
-			$("#rVal").val(pixel[0]);
-			$("#gVal").val(pixel[1]);
-			$("#bVal").val(pixel[2]);
-			$("#rgbVal").val(pixel[0]+","+pixel[1]+","+pixel[2]);
+			$("#rVal").text(pixel[0]);
+			$("#gVal").text(pixel[1]);
+			$("#bVal").text(pixel[2]);
+			$("#rgbVal").text(pixel[0]+","+pixel[1]+","+pixel[2]);
 
 			var dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
 			var hex = '#' + ('0000' + dColor.toString(16)).substr(-6);
-	        $('#hexVal').val(hex);
+	        $('#hexVal').text(hex);
 
 	        if(counter > 15) {
 	        	$this.sendColorAjax(hex);
@@ -45,6 +45,14 @@ var LedScreen = React.createClass({
 	           		
 	           
 		});
+		$( window ).resize(function() {
+			if(window.innerWidth < 410) {
+				var canvas = document.getElementById("picker");
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(image, 0, 0, 200, 200);
+
+			}
+		});
 	},
 	sendColorAjax: function(hex) {
 		var data = JSON.stringify({
@@ -52,7 +60,7 @@ var LedScreen = React.createClass({
 		});
 
 		$.ajax({
-			url: "http://192.168.0.199:8000/hex",
+			url: "http://192.168.0.193:8000/hex",
 			type: "POST",
 			contentType:'application/json',
 			dataType:'json',
@@ -69,23 +77,34 @@ var LedScreen = React.createClass({
 	componentDidMount: function() {
 		let $this = this;
 		React.render(
-			<div className="well bs-component" id="login-container">
+			<div className="well bs-component">
 				<section>
 			        <div className="container">
 			            <div className="colorpicker row">
 			                <div className="col-md-2">
 			                </div>
 			                <div className="col-md-4">
-			                    <canvas id="picker" width="250" height="250"></canvas>
+			                    <canvas id="picker" width="269" height="269"></canvas>
 			                </div>
-			                <div className="col-md-4">
-			                    <div className="controls">
-			                        <div><label>R</label> <input type="text" id="rVal"/></div>
-			                        <div><label>G</label> <input type="text" id="gVal"/></div>
-			                        <div><label>B</label> <input type="text" id="bVal"/></div>
-			                        <div><label>RGB</label> <input type="text" id="rgbVal"/></div>
-			                        <div><label>HEX</label> <input type="text" id="hexVal"/></div>
-			                    </div>
+			                <div className="table-responsive-vertical col-md-4">
+			                    <table className="table">
+	              					<thead>
+	                					<tr className="show-grid header-grid">
+						                    <th id="table-temp" data-field="Green">Green</th>
+						                    <th id="table-temp" data-field="Blue">Blue</th>
+						                    <th id="table-temp" data-field="Red">Red</th>
+						                    <th id="table-temp" data-field="Hex">Hex</th>
+					                	</tr>
+					                </thead>
+					                <tbody>
+						                <tr>
+						                    <td id="rVal"></td>
+						                    <td id="gVal"></td>
+						                    <td id="bVal"></td>
+						                    <td id="hexVal"></td>
+						                </tr>
+					                </tbody>
+            					</table>
 			                </div>
 			            </div>
 			        </div>

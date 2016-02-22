@@ -27,7 +27,7 @@ var App = React.createClass({
 		window._router.transitionTo('/');
 	},
 	navigateLed: function() {
-		this.transitionTo('Led Screen');
+		this.transitionTo('Led');
 	},
 
 	render: function () {
@@ -40,19 +40,18 @@ var App = React.createClass({
 		return (
 			<div className="page-container bs-container">
 				<TopNav pageName={pageName} />
-				<div id="content" className="bs-container jumbotron">
+				<div className="bs-container jumbotron">
 					<RouteHandler/>
 				</div>
 				<footer>
 					<nav className="navbar">
 						<div>
-							<button className="btn" onClick={this.navigateLed}>
-								<i className="material-icons">Led</i>
+							<button className="btn-flat" onClick={this.navigateLed}>
+								<i className="material-icons">invert_colors</i>
 							</button>
-							<button className="btn" onClick={this.handleMenu}>
-								<i className="material-icons">Home</i>
+							<button className="btn-flat" onClick={this.handleMenu}>
+								<i className="material-icons">settings</i>
 							</button>
-			            	
 		            	</div>
 					</nav>
 				</footer>
@@ -64,8 +63,8 @@ var App = React.createClass({
 
 var routes = (
 	<Route name="app" path="/app" handler={App}>
-		<Route name="Led Screen" path="/led" handler={LedScreen}/>
-	<Route name="Home Screen" path="/" handler={HomeScreen}/>
+		<Route name="Led" path="/led" handler={LedScreen}/>
+	<Route name="Home" path="/" handler={HomeScreen}/>
 
 	</Route>
 
