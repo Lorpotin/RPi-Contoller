@@ -1,0 +1,195 @@
+body {
+    overflow-x: hidden;
+}
+
+section {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+section #timer {
+    padding-top: -150px;
+}
+
+.navbar-inverse {
+	background-color: black;
+}
+
+/* colorpicker styles */
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.colorpicker {
+
+    background-color: #fff;
+    color: #FFFFFF;
+    font-size: 17px;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+}
+
+#picker {
+
+	text-align: center;
+    cursor: crosshair;
+    margin: 10px;
+    border: 0;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.controls {
+
+    margin-top: 50px;
+    max-width: 250px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 8%;
+}
+
+.controls > div {
+
+    border: 1px solid black;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding: 5px;
+
+}
+
+.controls label {
+	
+    float: left;
+    color: black;
+}
+
+.controls > div input {
+
+    border: 1px solid black;
+    float: right;
+    font-size: 17px;
+    height: 25px;
+    margin-left: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100px;
+    color: black;
+
+}
+
+footer {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0;left: 0;
+
+
+}
+footer nav div {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 500px;
+    
+}
+
+#tempheader {
+    text-align: center;
+}
+
+#tempdate {
+    text-align: center;
+}
+#tempdata {
+    text-align: center;
+}
+
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.bs-component {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.jumbotron p {
+    font-size: 18px;
+}
+
+
+.header-page h4 {
+    line-height: 31px;
+    text-align: center;
+}
+
+.header{
+    position: fixed;
+    height: 35px;
+    width: 100%;
+}
+
+.nav-top > div {
+    text-align: center;
+    display: inline-block;
+    color: #000;
+    width: 33%;
+    margin: 0 auto;
+}
+
+.nav-top {
+    text-align: center;
+    margin: 0 auto;
+    height: 39px;
+    background-color: #FFF;
+    
+}
+
+.header-grid {
+    font-weight: bold;
+    top: 150px;
+}
+
+
+footer .navbar {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+footer .navbar .btn {
+    padding: 8px 12px;
+    margin-right: 15px;
+}
+
+@media screen and (min-width: 750px) {
+  
+    .header-page h4 {
+        font-size: 30px;
+    }
+    footer {
+        bottom: initial;
+        top: 50px;
+    }
+
+}
+@media screen and (max-width: 750px) {
+  
+    footer {
+        bottom: 0;
+    }
+   
+}
+
+
+
+
+
