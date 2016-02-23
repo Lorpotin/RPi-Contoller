@@ -52,8 +52,36 @@ canvas {
 
 #table-temp {
     font-weight: bold;
-    color: #757575;
+    color: #2C3E50;
+    font-size: 30px;
+
 }
+
+#hexVal {
+    font-size: 25px;
+}
+
+
+
+#knob {
+    top: 14%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#wheel {
+    width: 575px;
+    position:relative;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 
 
 footer {
@@ -152,9 +180,6 @@ footer .navbar button {
     table-layout: fixed;
 }
 
-#knob {
-    text-align: center;
-}
 
 @media screen and (min-width: 750px) {
   
@@ -176,6 +201,16 @@ footer .navbar button {
         bottom: 0;
 
     }
+    #table-temp {
+        font-size: 20px;
+    }
+    #color-pic {
+        width: 30px;
+        height: 20px;
+    }
+    #hexVal {
+        font-size: 15px;
+    }
    
 }
 
@@ -191,6 +226,149 @@ footer .navbar button {
     }
    
 }
+
+@media screen and (max-width: 780px) {
+     
+    #knob {
+        width: 360px;
+        height: 360px;
+    }
+   
+}
+
+@media screen and (max-width: 720px) {
+     
+    #knob {
+        top: 16%;
+        width: 320px;
+        height: 320px;
+    }
+   
+}
+@media screen and (max-width: 665px) {
+     
+    #knob {
+        width: 300px;
+        height: 300px;
+    }
+   
+}
+
+@media screen and (max-width: 640px) {
+     
+    #knob {
+        width: 290px;
+        height: 290px;
+    }
+   
+}
+
+@media screen and (max-width: 600px) {
+     
+    #knob {
+        width: 270px;
+        height: 270px;
+    }
+   
+}
+@media screen and (max-width: 565px) {
+     
+    #knob {
+        width: 250px;
+        height: 250px;
+    }
+   
+}
+
+@media screen and (max-width: 535px) {
+     
+    #knob {
+        width: 230px;
+        height: 230px;
+    }
+   
+}
+
+@media screen and (max-width: 500px) {
+     
+    #knob {
+        width: 210px;
+        height: 210px;
+    }
+   
+}
+
+@media screen and (max-width: 475px) {
+     
+    #knob {
+        width: 195px;
+        height: 195px;
+    }
+   
+}
+
+@media screen and (max-width: 445px) {
+     
+    #knob {
+        width: 175px;
+        height: 175px;
+    }
+   
+}
+
+@media screen and (max-width: 415px) {
+     
+    #knob {
+        width: 155px;
+        height: 155px;
+    }
+   
+}
+
+@media screen and (max-width: 390px) {
+     
+    #knob {
+        width: 145px;
+        height: 145px;
+    }
+   
+}
+
+@media screen and (max-width: 370px) {
+     
+    #knob {
+        width: 135px;
+        height: 135px;
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

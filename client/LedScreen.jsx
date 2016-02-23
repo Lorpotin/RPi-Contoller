@@ -1,7 +1,9 @@
 
 var React = require('react');
 
-var calcs = require("./calcs.js");
+var values = require("./calcs.js");
+
+var counter = 0;
 
 
 
@@ -14,13 +16,20 @@ var LedScreen = React.createClass({
 		let $this = this;
 		Draggable.create("#knob", 
 			{ type: "rotation", throwProps: true, dragResistance : 0, edgeResistance : 5,
-			onDragEnd: function() {
-				var x = Math.abs( ((this.rotation / 360) % 1.00));
-				x = Math.round(x * 100) / 100;
-				$('#hexVal').text(calcs.values[x]);
-				$('#color').css("color", calcs.values[x]);
-				$this.sendColorAjax(calcs.values[x]);
-				x = null;
+			onDrag: function() {
+				if(counter > 7) {
+					var x = Math.abs( ((this.rotation / 360) % 1.00));
+					x = Math.round(x * 100) / 100;
+					console.log(x);
+					$('#hexVal').text(values.values[x]);
+					$('#color-pic').css("background-color", values.values[x]);
+					$this.sendColorAjax(values.values[x]);
+					x = null;
+					counter = 0;
+				}
+				else
+					counter++;
+				
 			}
 		});
 		
@@ -55,19 +64,17 @@ var LedScreen = React.createClass({
 			            <div id="tempheader" className="row">
 			            	<div className="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 			                <div className="table-responsive-vertical col-lg-8 col-md-8 col-sm-8 col-xs-8">
-			                    <table className="table">
+			                    <table className="table centered">
 	              					<thead>
 	                					<tr className="show-grid header-grid">
-						                
 						                    <th id="table-temp" data-field="Hex">Hex</th>
 						                    <th id="table-temp" data-field="color">Color</th>
 					                	</tr>
 					                </thead>
 					                <tbody>
 						                <tr>
-						                    
 						                    <td id="hexVal">#FFFFF</td>
-						                    <td id="color">ASD</td>
+						                    <td id="color"><img id="color-pic" width="70" height="40" src="images/blank.png"></img></td>
 						                </tr>
 						               
 					                </tbody>
@@ -76,11 +83,9 @@ var LedScreen = React.createClass({
 			            </div>
 			        </div>
 			        <div className="container">
-			        	<div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-		                    
-		                </div>
-		                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-		                    <image id="knob" className="img-responsive" src="images/knob.png"/>
+		                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                	<image id="wheel" className="center-block img-responsive" src="images/wheel.png"/>
+		                    <image id="knob" className="center-block img-responsive" src="images/knob.png"/>
 		                </div>
 			        </div>
 			    </section>

@@ -99,7 +99,7 @@ module.exports = {
 		"0.97" : "#FFFF",
 		"0.98" : "#FFFF",
 		"0.99" : "#FFFF",
-		"1.0" : "#FFFF",
+		"1" : "#FFFF",
 		
 
 	}

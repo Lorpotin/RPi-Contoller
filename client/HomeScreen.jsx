@@ -51,7 +51,17 @@ var HomeScreen = React.createClass({
 				
 			},
 			error: function(xhr, status, err) {
-
+				React.render(
+				<div className="bs-component container-orders">
+				<section>
+                   <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    	<h1>Error connecting to server.</h1>
+                   </div>
+                   
+                </section>
+                </div>,
+				document.getElementById('container')
+				);
 			}
 
 		});
