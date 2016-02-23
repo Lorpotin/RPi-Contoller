@@ -1,58 +1,30 @@
+
 var React = require('react');
+
+var calcs = require("./calcs.js");
+
+
+
+
 
 var LedScreen = React.createClass({
 	
 	
 	showStuff: function() {
 		let $this = this;
-		var counter = 0;
-
-		var canvas = document.getElementById("picker");
-		var ctx = canvas.getContext("2d");
-
-		var image = new Image();
-		image.src = "images/lataus1.png";
-		image.onload = function() {
-			ctx.drawImage(image, 0, 0, image.width, image.height);
-		}
-
-		$("#picker").mousemove(function(e) {
-			//Get mouse coordinates
-			var canvasOffset = $(canvas).offset();
-			var canvasX = Math.floor(e.pageX - canvasOffset.left);
-			var canvasY = Math.floor(e.pageY - canvasOffset.top);
-
-			//Get current pixel depending on mouse position
-			var imageData = ctx.getImageData(canvasX, canvasY, 1, 1);
-			var pixel = imageData.data;
-
-			//Update interface just to show the values for convenience
-			$("#rVal").text(pixel[0]);
-			$("#gVal").text(pixel[1]);
-			$("#bVal").text(pixel[2]);
-			$("#rgbVal").text(pixel[0]+","+pixel[1]+","+pixel[2]);
-
-			var dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
-			var hex = '#' + ('0000' + dColor.toString(16)).substr(-6);
-	        $('#hexVal').text(hex);
-
-	        if(counter > 15) {
-	        	$this.sendColorAjax(hex);
-	        	counter = 0;
-	        }
-	        else
-	        	counter++;
-	           		
-	           
-		});
-		$( window ).resize(function() {
-			if(window.innerWidth < 410) {
-				var canvas = document.getElementById("picker");
-				var ctx = canvas.getContext("2d");
-				ctx.drawImage(image, 0, 0, 200, 200);
-
+		Draggable.create("#knob", 
+			{ type: "rotation", throwProps: true, dragResistance : 0, edgeResistance : 5,
+			onDragEnd: function() {
+				var x = Math.abs( ((this.rotation / 360) % 1.00));
+				x = Math.round(x * 100) / 100;
+				$('#hexVal').text(calcs.values[x]);
+				$('#color').css("color", calcs.values[x]);
+				$this.sendColorAjax(calcs.values[x]);
+				x = null;
 			}
 		});
+		
+		
 	},
 	sendColorAjax: function(hex) {
 		var data = JSON.stringify({
@@ -80,33 +52,36 @@ var LedScreen = React.createClass({
 			<div className="well bs-component">
 				<section>
 			        <div className="container">
-			            <div className="colorpicker row">
-			                <div className="col-md-2">
-			                </div>
-			                <div className="col-md-4">
-			                    <canvas id="picker" width="269" height="269"></canvas>
-			                </div>
-			                <div className="table-responsive-vertical col-md-4">
+			            <div id="tempheader" className="row">
+			            	<div className="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+			                <div className="table-responsive-vertical col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			                    <table className="table">
 	              					<thead>
 	                					<tr className="show-grid header-grid">
-						                    <th id="table-temp" data-field="Green">Green</th>
-						                    <th id="table-temp" data-field="Blue">Blue</th>
-						                    <th id="table-temp" data-field="Red">Red</th>
+						                
 						                    <th id="table-temp" data-field="Hex">Hex</th>
+						                    <th id="table-temp" data-field="color">Color</th>
 					                	</tr>
 					                </thead>
 					                <tbody>
 						                <tr>
-						                    <td id="rVal"></td>
-						                    <td id="gVal"></td>
-						                    <td id="bVal"></td>
-						                    <td id="hexVal"></td>
+						                    
+						                    <td id="hexVal">#FFFFF</td>
+						                    <td id="color">ASD</td>
 						                </tr>
+						               
 					                </tbody>
             					</table>
 			                </div>
 			            </div>
+			        </div>
+			        <div className="container">
+			        	<div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		                    
+		                </div>
+		                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		                    <image id="knob" className="img-responsive" src="images/knob.png"/>
+		                </div>
 			        </div>
 			    </section>
 			</div>,

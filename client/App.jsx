@@ -19,7 +19,9 @@ var LedScreen = require('./LedScreen.jsx');
 var	HomeScreen = require('./HomeScreen.jsx');
 var TopNav = require('./TopNav.jsx');
 
+
 var App = React.createClass({
+
 
 	mixins: [Router.State, Navigation],
 
@@ -28,6 +30,8 @@ var App = React.createClass({
 	},
 	navigateLed: function() {
 		this.transitionTo('Led');
+				
+
 	},
 
 	render: function () {
@@ -35,6 +39,7 @@ var App = React.createClass({
 
 		pageName = this.getRoutes()[1].name || this.getParams().id;
 		window.scrollTo(0, 1);
+
 			
 
 		return (
