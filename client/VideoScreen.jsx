@@ -16,6 +16,14 @@ var VideoScreen = React.createClass({
 		this.showData();
 	},
 
+	changeSrc: function(data) {
+		var srtData = "http://192.168.0.193:8000/video/"+data+".vtt";
+		data = "http://192.168.0.193:8000/video/"+data;
+		$("#video").html("<source src='" + data + "'type=video/mp4></source><track id='track' src='"+srtData+"' kind='subtitle' srclang='en-US' label='English' />" );
+		
+
+	},
+
 	showData: function() {
 		let $this = this,
 				vd_data,
@@ -36,11 +44,10 @@ var VideoScreen = React.createClass({
 		promise = Promise.all(ajaxes).then(() => {
 			for(var i = 0; i < vd_data.length; i++) {
 				content.push(
-					<a className="waves-effect waves-light btn-large" href={`http://192.168.0.193:8000/video/${vd_data[i].data}`}><i className="material-icons right">cloud</i>{vd_data[i].data}</a>		  
+					<a id="video_btn" name={vd_data[i].data} className="waves-effect waves-light btn-large"><i className="material-icons right">cloud</i>{vd_data[i].data}</a>		  
 				);
 			}
 			
-			console.log(content);
 
 			React.render(
 				<div className="bs-component">
@@ -49,8 +56,23 @@ var VideoScreen = React.createClass({
 			            	{content}
 					    </div>
 					</section>
+					<section>
+						<section>
+							<div id="tempdate" className="center-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<video id="video" controls>
+									
+								</video>
+		
+
+							</div>
+						</section>
+					</section>
 
 				</div>, document.getElementById('vidContainer'));
+
+			$("#video_btn").click(function(){
+			    $this.changeSrc(this.name);
+			});
 		});
 	}
 
