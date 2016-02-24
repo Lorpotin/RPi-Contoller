@@ -17,6 +17,7 @@ require('../client/css/custom.css');
 
 var LedScreen = require('./LedScreen.jsx');
 var	HomeScreen = require('./HomeScreen.jsx');
+var VideoScreen = require('./VideoScreen.jsx');
 var TopNav = require('./TopNav.jsx');
 
 
@@ -31,7 +32,9 @@ var App = React.createClass({
 	navigateLed: function() {
 		this.transitionTo('Led');
 				
-
+	},
+	navigateVid: function() {
+		this.transitionTo('Video');
 	},
 
 	render: function () {
@@ -57,6 +60,9 @@ var App = React.createClass({
 							<button className="btn-flat" onClick={this.handleMenu}>
 								<i className="material-icons">settings</i>
 							</button>
+							<button className="btn-flat" onClick={this.navigateVid}>
+								<i className="material-icons">video_library</i>
+							</button>
 		            	</div>
 					</nav>
 				</footer>
@@ -69,6 +75,7 @@ var App = React.createClass({
 var routes = (
 	<Route name="app" path="/app" handler={App}>
 		<Route name="Led" path="/led" handler={LedScreen}/>
+		<Route name="Video" path="/video" handler={VideoScreen}/>
 	<Route name="Home" path="/" handler={HomeScreen}/>
 
 	</Route>

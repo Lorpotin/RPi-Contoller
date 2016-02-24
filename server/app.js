@@ -3,6 +3,7 @@ var app		= express();
 var bodyParser = require('body-parser');
 var util = require('util');
 var exec = require('child_process').exec;
+var fs = require('fs');
 var child1;
 var child2;
 var port = process.env.PORT || 8000;
@@ -64,12 +65,55 @@ app.get("/temp", function(req, res) {
     
 });
 
+app.get("/files", function(req, res) {
+    var array = [];
+    
+    fs.readdir("videos", function(err, items) {
+        for (var i=0; i < items.length; i++) {
+            var object = {
+                data: ""
+            }
+            console.log(object.data);
+            object.data = String(items[i]);
+            array.push(object);
+        }
+        res.send(array);
+        res.end();
+    });
 
 
+});
+
+app.get("/video/:name", function(req, res) {
+    var name = req.params.name;
+    var path = 'videos/'+name;
+    var stat = fs.statSync(path);
+    var total = stat.size;
+    if (req.headers['range']) {
+        var range = req.headers.range;
+        var parts = range.replace(/bytes=/, "").split("-");
+        var partialstart = parts[0];
+        var partialend = parts[1];
+
+        var start = parseInt(partialstart, 10);
+        var end = partialend ? parseInt(partialend, 10) : total-1;
+        var chunksize = (end-start)+1;
+        console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
+
+        var file = fs.createReadStream(path, {start: start, end: end});
+        res.writeHead(206, { 'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
+        file.pipe(res);
+    } 
+    else {
+        console.log('ALL: ' + total);
+        res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
+        fs.createReadStream(path).pipe(res);
+    }
+});
 
 
 var server = app.listen(port, process.env.IP, function () {
-    var host = "192.168.0.199";
+    var host = "192.168.0.193";
     var port = server.address().port;
     console.log("App running at http://%s:%s", host, port);
 });

@@ -28,7 +28,7 @@ var HomeScreen = React.createClass({
 				var t = new Date( data.date );
 
 				React.render(
-				<div className="bs-component container-orders">
+				<div className="bs-component">
 				<section>
                    <div id="tempdate" className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     	<h1>{t.toTimeString().split('G')[0]}</h1>
