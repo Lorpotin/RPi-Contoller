@@ -52,13 +52,13 @@ var VideoScreen = React.createClass({
 			React.render(
 				<div className="bs-component">
 					<section>
-						<div id="tempdate" className="center-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div id="tempdate" className="center-block col-lg-12 col-md-12 col-sm-12 col-xs-6">
 			            	{content}
 					    </div>
 					</section>
 					<section>
 						<section>
-							<div id="tempdate" className="center-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div id="tempdate" className="center-block col-lg-12 col-md-12 col-sm-12 col-xs-6">
 								<video id="video" controls>
 									
 								</video>
