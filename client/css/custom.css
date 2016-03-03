@@ -5,7 +5,7 @@ body, html {
 }
 
 section {
-    margin-top: 75px;
+    margin-top: 85px;
     margin-bottom: 75px;
 }
 
@@ -35,9 +35,21 @@ canvas {
     text-align: center;
     margin: 0 auto;
     width: 100%;
+}
+.center {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
 
- 
-   
+#videoDiv {
+    margin-top: 50px;
+}
+
+#videoBtn {
+    margin-top: 15px;
+    margin-right: 15px;
 }
 
 .colorpicker {
