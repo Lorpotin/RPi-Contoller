@@ -4,6 +4,10 @@ body, html {
     overflow-x: hidden;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 section {
     margin-top: 85px;
     margin-bottom: 75px;
@@ -50,7 +54,26 @@ canvas {
 #videoBtn {
     margin-top: 15px;
     margin-right: 15px;
+
+    -webkit-transition: all 0.3s ease; /* Safari and Chrome */
+    -moz-transition: all 0.3s ease; /* Firefox */
+    -ms-transition: all 0.3s ease; /* IE 9 */
+    -o-transition: all 0.3s ease; /* Opera */
+    transition: all 0.4s ease;
 }
+
+#videoBtn:hover {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 25px;
+    color: black;
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+    transform:scale(1.25);
+}
+
 
 .colorpicker {
 
